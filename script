@@ -1,0 +1,33 @@
+#!/bin/bash
+read -p "What directory would you like to search?-->" dir
+read -p "Date you wish to verify with correct formatting please:-->" chdate
+read -p "What file would you like to use for output file?-->" outf
+read -p "What would you like your first threshold to be(comparing quantity?-->" threshold
+read -p "What would you like your second threshold to be(comparing quantity times price?-->" threshold2
+cd $dir
+files=$(ls)
+
+for x in $files
+do
+ urdate=$(head -1 $x)
+ if [[ $chdate == $urdate ]]; then
+ 	echo "$chdate matched with file $x"
+ 	filelinec=$(wc -l $x | awk '{ print $1}')
+	filelinecc=$(($filelinec - 1))
+	lst=$(tail -"$filelinecc" $x)
+	for c in $lst
+	do
+	
+	var1=$(echo $c | awk -F "," '{ print $2 }')
+	var2=$(echo $c | awk -F "," '{ print $3 }')
+	var3=$(bc <<< "scale=2; $var1 * $var2")
+	var3f=${var3%.*}
+	echo $var1 $var2 $var3 $var2f $var3f
+	if [ $var1 -gt $threshold ] && [ $var3f -gt $threshold2 ] >/dev/null 2>&1 ; then
+		echo $c >> $outf
+	fi
+	done
+	
+ fi
+
+done
