@@ -1,0 +1,36 @@
+#!/bin/bash
+#useradd low level just acct added
+#adduser adds home directory and full setup
+
+#perl encrypt password
+#password="Spring2017"
+#pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+#echo $pass #
+#uses system default crypt for encrption
+
+#USERADD using perl for encrypted password
+#list=$(cat usersmike)
+#for x in $list
+#do
+#useradd -p $pass $x 
+#echo "created user $x"
+#done
+#
+#---------------------script finish--------------------------
+
+#list=$(cat userstom)
+#for x in $list
+#do
+#echo -e "Spring2017\nSpring2017\nmyname\nroomnum\nwkph\nhmph\nother\ny\n" | adduser $x
+#echo "user $x has been added"
+#add super user privledges
+#usermod -aG sudo $x
+#done
+
+
+#--------------------deluser-----------------------
+#to delete user
+# use  deluser $x   #based on the /etc/deluser.conf  by default doesn't delete anything
+#deluser --remove-home $x  # self explanitory
+#deluser --remove-all-files
+#note you can always create new user with same uid to inherit persons files and directories
