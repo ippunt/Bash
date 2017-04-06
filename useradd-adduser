@@ -34,3 +34,4 @@
 #deluser --remove-home $x  # self explanitory
 #deluser --remove-all-files
 #note you can always create new user with same uid to inherit persons files and directories
+ 
