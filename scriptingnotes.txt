@@ -37,7 +37,7 @@ while [ $x -lt $y ]
   do
   echo -n "*"
   echo $x
-  x=$((x+1))
+  x=$((x+1)) 
   done
 echo "*"
 bash while1
@@ -93,7 +93,7 @@ Todays date (d) Currently logged in users (u) The contents of the / directory (r
 Enter your choice(d/u/r)--> \c" 
 read ANSWER
 if [ $ANSWER = "d" -o $ANSWER = "D" ]
-then echo -e "Today’s date is:" 
+then echo -e "Todayâ€™s date is:" 
 date
 elif [ $ANSWER = "u" -o $ANSWER = "U" ]
 then echo -e "\nThe people logged into the system include:"
@@ -107,21 +107,21 @@ fi
 _______________________________________________________________________________
 CASE TEST
 #!/bin/bash 
-echo –e "What would you like to do? 
+echo â€“e "What would you like to do? 
 Add an entry (a) 
 Search an entry (s) 
 Enter your choice (a/s)-->\c" 
 read ANSWER 
 case $ANSWER in
-a|A ) echo –e "Please enter the name of the family member -->\c" 
+a|A ) echo â€“e "Please enter the name of the family member -->\c" 
 	read NAME 
-	echo –e "Please enter the family member’s relation to you (i.e.mother)-->\c" 
+	echo â€“e "Please enter the family memberâ€™s relation to you (i.e.mother)-->\c" 
 	read RELATION 
-	echo –e "Please enter the family member’s telephone number -->\c" 
+	echo â€“e "Please enter the family memberâ€™s telephone number -->\c" 
 	read PHONE 
-	echo –e "$NAME\t$RELATION\t$PHONE" >> database 
+	echo â€“e "$NAME\t$RELATION\t$PHONE" >> database 
 	;; 
-s|S ) echo –e "What word would you like to look for? -->\c" 
+s|S ) echo â€“e "What word would you like to look for? -->\c" 
 	read WORD 
 	grep "$WORD" database 
 	;; 
