@@ -1,0 +1,145 @@
+DEBUG A SCRIPT   bash -x scriptname or bash -xv scriptname   verbose shows you script  x shows you every detail
+________________________________________________________________________
+know how to store time as variable or as constant
+TODAY=$(date +%Y%m%d%s); echo $TODAY  # always stores the same time, time does not change
+today='date +%Y%m%d%s' ; echo $today  #store the variable at that current time even with backticks
+alias TODAY='date +%Y%m%d%H%M%S' # works with single or double quotes but not backticks
+alias will run the command fresh each time so it will be current time each time not a stored time, like the two others
+_________________________________________________________________________________
+-email all logged in users 
+#/bin/bash
+who > squid
+cat squid | awk '{ print $1 }' > squid1
+lst=$(cat squid1)
+for x in lst
+do
+fortune | mail $x -s " Subject Line"
+done
+rm squid              ###  FOR FUTURE REFERENCE USE   tempfile1=$(mktempt)   at the end  rm $tempfile1
+rm squid1
+______________________________________________________________________
+WHILE LOOP - COUNTERS AND COUNTING
+let x=0
+let y=10
+while [ $x -lt $y ]
+do 
+echo -n "*"
+x=$((x+1))
+done 
+echo "*"
+bash loop | wc -c  # your answer is 12
+***********   11 stars plus one carriage return
+
+let x=1
+let y=11
+
+while [ $x -lt $y ]
+  do
+  echo -n "*"
+  echo $x
+  x=$((x+1))
+  done
+echo "*"
+bash while1
+*1
+*2
+*3
+*4
+*5
+*6
+*7
+*8
+*9
+*10
+*
+bash loop2 | wc -c 
+33   count carefully!!!
+____________________________________________________________________________________________________
+IFS   INTERNAL FIELD SEPERATOR  RUN SCRIPT ./script one two three four five six
+			IN ORDER TO SEE $1 and shift at work
+#!/bin/bash
+# IFS seperators
+SPACES="1 2 3 4 5 6"
+GRTR="1>2>3>4>5>6"
+PIPES="1|2|3|4 5|6" # by the output you wouldn't know there is a seperator missing when IFS set to pipe
+for x in $SPACES
+do echo "this is spaces" $x
+done
+echo $SPACES
+echo $1  #arguments have to be after ./seperators one two three four five six
+shift
+echo '$5 after the shift' $5  #shift will shift them over one
+IFS=">"
+for x in $GRTR
+do echo " this is GRTR" $x
+done
+echo $GRTR
+unset IFS # if you dont unset its ok you can reset next interation and works
+echo $GRTR #
+
+IFS="|"
+for x in $PIPES
+do echo "this is pipes" $x
+done
+echo $PIPES
+unset IFS
+echo $PIPES
+__________________________________________________________________________________________
+SIMPLE TEST     NOT TO BE CONFUSED WITH THE TEST COMMAND DIFFERENT TEST
+-Tests constucts
+#!/bin/bash 
+echo -e "What would you like to see?
+Todays date (d) Currently logged in users (u) The contents of the / directory (r)  
+Enter your choice(d/u/r)--> \c" 
+read ANSWER
+if [ $ANSWER = "d" -o $ANSWER = "D" ]
+then echo -e "Today’s date is:" 
+date
+elif [ $ANSWER = "u" -o $ANSWER = "U" ]
+then echo -e "\nThe people logged into the system include:"
+who
+elif [ $ANSWER = "r" -o $ANSWER = "R" ]
+then echo -e "\nThe contents of the / directory are:" 
+ls -F /
+elif [ $ANSWER != "d" ]
+then echo "Error, please check for typos"
+fi
+_______________________________________________________________________________
+CASE TEST
+#!/bin/bash 
+echo –e "What would you like to do? 
+Add an entry (a) 
+Search an entry (s) 
+Enter your choice (a/s)-->\c" 
+read ANSWER 
+case $ANSWER in
+a|A ) echo –e "Please enter the name of the family member -->\c" 
+	read NAME 
+	echo –e "Please enter the family member’s relation to you (i.e.mother)-->\c" 
+	read RELATION 
+	echo –e "Please enter the family member’s telephone number -->\c" 
+	read PHONE 
+	echo –e "$NAME\t$RELATION\t$PHONE" >> database 
+	;; 
+s|S ) echo –e "What word would you like to look for? -->\c" 
+	read WORD 
+	grep "$WORD" database 
+	;; 
+*) echo "You must enter either the letter a or s."
+	 ;;
+esac 
+# A case construct is typically used when there are alot of choices
+# when a match occures the commands to the right are executed up until the ;; kind of like if fi, it stops it
+#Must end with a backwards case
+__________________________________________________________________________________________
+HEREDOC INTO BC
+#!/bin/bash
+bc << BLK
+a=2
+b=73
+c=a+b
+a				output in these lines  2  in this case do need echo or anything
+b						       73
+c						       75
+BLK
+_______________________________________________________
