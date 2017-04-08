@@ -1,0 +1,13 @@
+http://tldp.org/LDP/abs/html/string-manipulation.html
+Big take away % strips out quickest substring
+%% strips out longest substring of match
+So basically % cuts it out as soon as it finds it
+%% cuts it out at the last option
+HAD TO QUICKLY SEE THIS IN ACTION
+#!/bin/bash
+dog="abseghetueutehhh"
+echo $dog
+newdog=${dog%e*}
+echo $newdog
+newnewdog=${dog%%e*}
+echo $newnewdog
