@@ -138,7 +138,7 @@ bc << BLK
 a=2
 b=73
 c=a+b
-a				output in these lines  2  in this case do need echo or anything
+a				output in these lines  2  in this case you do not need echo or anything
 b						       73
 c						       75
 BLK
