@@ -11,3 +11,8 @@ newdog=${dog%e*}
 echo $newdog
 newnewdog=${dog%%e*}
 echo $newnewdog
+output:
+abseghetueutehhh
+abseghetueut
+abs
+_______________________________________________________________________________
