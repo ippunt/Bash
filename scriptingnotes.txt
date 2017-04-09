@@ -4,9 +4,9 @@ know how to store time as variable or as constant
 TODAY=$(date +%Y%m%d%s); echo $TODAY  # always stores the same time, time does not change
 today='date +%Y%m%d%s' ; echo $today  #store the variable at that current time even with backticks
 alias TODAY='date +%Y%m%d%H%M%S' # works with single or double quotes but not backticks
-alias will run the command fresh each time so it will be current time each time not a stored time, like the two others
+alias will run the command fresh each time so it will be current time each time ran, not a stored time like the two others.
 _________________________________________________________________________________
--email all logged in users 
+EMAIL ALL LOGEED IN USERS
 #/bin/bash
 who > squid
 cat squid | awk '{ print $1 }' > squid1
