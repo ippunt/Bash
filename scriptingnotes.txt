@@ -85,7 +85,10 @@ echo $PIPES
 unset IFS
 echo $PIPES
 __________________________________________________________________________________________
-SIMPLE TEST     NOT TO BE CONFUSED WITH THE TEST COMMAND DIFFERENT TEST
+SIMPLE TEST    
+- the single bracked is an alias for the test command and has its limitations ie one operand will cause problems
+the double bracet if [[ x = x ]] ; then ; echo "YEP"; fi
+double bracket should be used while in a bash shell or many other shells
 -Tests constucts
 #!/bin/bash 
 echo -e "What would you like to see?
