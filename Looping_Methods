@@ -1,0 +1,10 @@
+
+1. With a file
+2. Braces and numbers
+
+
+
+1.
+for i in $(cat names.txt); do echo $i; done;  EOF   Would iterate over names
+
+2. for i in {1..4}; do echo $i;done
