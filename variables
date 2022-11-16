@@ -1,0 +1,1 @@
+read -p "What directory would you like to search?-->" dir; # This is one method to request from user and store as dir
