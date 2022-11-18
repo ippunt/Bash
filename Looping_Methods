@@ -6,6 +6,6 @@
 
 1.
 for i in $(cat names.txt); do echo $i; done;  EOF   Would iterate over names
-while read -r line; do; dig $line; done < vhosts.txt
+while read -r line; do; dig $line; done < vhosts.txt # You would probably want to append to domain-name
 
 2. for i in {1..4}; do echo $i;done
