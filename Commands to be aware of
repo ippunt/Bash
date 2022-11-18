@@ -1,0 +1,3 @@
+exec - Redirect IO   !#/bin/bash;exec 1> >( logger -s -t $(basename $0)) 2>&1; nc -vklp 80;
+xargs - send output to something that expects arguments  IE. rm filename; can be: sript | xargs rm
+  I think of this one as going from left to right. 
